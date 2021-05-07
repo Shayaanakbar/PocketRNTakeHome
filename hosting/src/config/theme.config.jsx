@@ -1,5 +1,6 @@
 import { createMuiTheme } from '@material-ui/core/styles';
 
+// Material UI Theme
 const theme = createMuiTheme({
     typography: {
         fontFamily: 'Nanum Gothic',
