@@ -1,12 +1,24 @@
-import React from "react";
+import React from 'react';
 import './App.css';
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+} from "react-router-dom";
 
 function App() {
-  return (
-    <div className="App">
-        <h1> App </h1>
-    </div>
-  );
+    return (
+        <Router>
+            <Switch>
+                <Route exact path="/">
+                    Signin
+                </Route>
+                <Route path="/sign-up">
+                    Signup
+                </Route>
+            </Switch>
+        </Router>
+    );
 }
 
 export default App;
