@@ -101,9 +101,10 @@ function SignIn(props) {
                             </Link>
                         </Grid>
                         <Grid item>
-                            <Link href="#" variant="body2">
-                                {"Don't have an account? Sign Up"}
+                            <Link to="/sign-up">
+                                Don't have an account? Sign up
                             </Link>
+
                         </Grid>
                     </Grid>
                 </form>
