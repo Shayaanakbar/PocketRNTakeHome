@@ -1,14 +1,15 @@
 import firebase from "firebase/app";
 import 'firebase/functions';
 
-const firebaseConfig = {
-    apiKey: "API_KEY",
+var firebaseConfig = {
+    apiKey: "AIzaSyDXKtXLurv4d4ndBpw4s83oQhjirfBGJzY",
     authDomain: "pocketrn-d6a55.firebaseapp.com",
+    databaseURL: "https://pocketrn-d6a55-default-rtdb.firebaseio.com",
     projectId: "pocketrn-d6a55",
     storageBucket: "pocketrn-d6a55.appspot.com",
-    messagingSenderId: "SENDER_ID",
-    appId: "APP_ID",
-    measurementId: "G-MEASUREMENT_ID"
+    messagingSenderId: "278432241734",
+    appId: "1:278432241734:web:b21775ca72e9833875d247",
+    measurementId: "G-JP4BQHY4MR"
 };
 
 const app = firebase.initializeApp(firebaseConfig);

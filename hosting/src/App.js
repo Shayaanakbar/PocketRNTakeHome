@@ -1,30 +1,33 @@
-import React, { useEffect } from "react";
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
-import { helloWorld } from "./sdk";
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+} from "react-router-dom";
+
+// style imports
+import { ThemeProvider } from '@material-ui/core/styles';
+import theme from './config/theme.config';
+
+// component imports
+import SignIn from "./pages/SignIn";
 
 function App() {
-  useEffect(() => {
-    helloWorld();
-  }, []);
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <Router>
+            <ThemeProvider theme={theme} >
+                <Switch>
+                    <Route exact path="/">
+                        <SignIn />
+                    </Route>
+                    <Route path="/sign-up">
+                        Signup
+                    </Route>
+                </Switch>
+            </ThemeProvider>
+        </Router>
+    );
 }
 
 export default App;
