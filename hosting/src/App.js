@@ -6,17 +6,26 @@ import {
     Route,
 } from "react-router-dom";
 
+// style imports
+import { ThemeProvider } from '@material-ui/core/styles';
+import theme from './config/theme.config';
+
+// component imports
+import SignIn from "./pages/SignIn";
+
 function App() {
     return (
         <Router>
-            <Switch>
-                <Route exact path="/">
-                    Signin
-                </Route>
-                <Route path="/sign-up">
-                    Signup
-                </Route>
-            </Switch>
+            <ThemeProvider theme={theme} >
+                <Switch>
+                    <Route exact path="/">
+                        <SignIn />
+                    </Route>
+                    <Route path="/sign-up">
+                        Signup
+                    </Route>
+                </Switch>
+            </ThemeProvider>
         </Router>
     );
 }
