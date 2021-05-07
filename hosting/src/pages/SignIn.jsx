@@ -18,6 +18,7 @@ import Container from '@material-ui/core/Container';
 
 import useStyles from "../config/theme-signinup";
 import Copyright from "../components/Copyright";
+import PasswordForget from "../components/PassWordForget";
 
 function SignIn(props) {
 
@@ -97,7 +98,7 @@ function SignIn(props) {
                     <Grid container>
                         <Grid item xs>
                             <Link href="#" variant="body2">
-                                Forgot password?
+                                <PasswordForget />
                             </Link>
                         </Grid>
                         <Grid item>
