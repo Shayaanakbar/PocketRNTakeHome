@@ -32,7 +32,7 @@ function SignUp(props) {
             // Later add user also to database
             .then(authUser => {
                 setUser(initialUser);
-                props.history.push("/dashboard");
+                props.history.push("/calendar");
             })
             .catch(error => {
                 setUser({...user, error: error.message})
