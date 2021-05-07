@@ -4,6 +4,7 @@
   "private": true,
   "proxy": "http://localhost:5001",
   "dependencies": {
+    "@syncfusion/ej2-react-schedule": "19.1.59",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
