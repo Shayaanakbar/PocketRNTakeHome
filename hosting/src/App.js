@@ -12,6 +12,7 @@ import theme from './config/theme.config';
 
 // component imports
 import SignIn from "./pages/SignIn";
+import SignUp from "./pages/SignUp";
 
 function App() {
     return (
@@ -22,7 +23,7 @@ function App() {
                         <SignIn />
                     </Route>
                     <Route path="/sign-up">
-                        Signup
+                        <SignUp />
                     </Route>
                 </Switch>
             </ThemeProvider>
