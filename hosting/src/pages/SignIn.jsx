@@ -1,5 +1,6 @@
 // Bootstrapped SignIn from MaterialUI
-import React from 'react';
+import React, { useState } from 'react';
+
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -17,8 +18,31 @@ import Container from '@material-ui/core/Container';
 import useStyles from "../config/theme-signinup";
 import Copyright from "../components/Copyright";
 
-export default function SignIn() {
+function SignIn(props) {
+
     const classes = useStyles();
+
+    const initialUser = {id: null, email: '', password: '', error: null, auth: null}
+
+    const [user, setUser] = useState(initialUser);
+
+    const handleChange = e => {
+        const {name, value} = e.target;
+        setUser({...user, [name]: value})
+    }
+
+    const handleSubmit = () => {
+        props.firebase.doSignInWithEmailAndPassword(user.email, user.password)
+            .then(authUser => {
+                setUser({initialUser})
+                props.history.push("/dashboard");
+            })
+            .catch(error => {
+                setUser({...user, error: error.message})
+            });
+    }
+
+    const isValid = user.email === '' || user.password === '';
 
     return (
         <Container component="main" maxWidth="xs">
@@ -30,9 +54,11 @@ export default function SignIn() {
                 <Typography component="h1" variant="h5">
                     Sign in
                 </Typography>
-                <form className={classes.form} noValidate>
+                <form className={classes.form}
+                      noValidate
+                      onSubmit={e => e.preventDefault()}
+                >
                     <TextField
-                        //onChange={handleChange}
                         variant="outlined"
                         margin="normal"
                         required
@@ -42,9 +68,9 @@ export default function SignIn() {
                         name="email"
                         autoComplete="email"
                         autoFocus
+                        onChange={handleChange}
                     />
                     <TextField
-                        //onChange={handleChange}
                         variant="outlined"
                         margin="normal"
                         required
@@ -54,6 +80,7 @@ export default function SignIn() {
                         type="password"
                         id="password"
                         autoComplete="current-password"
+                        onChange={handleChange}
                     />
                     <Button
                         type="submit"
@@ -61,6 +88,8 @@ export default function SignIn() {
                         variant="contained"
                         color="primary"
                         className={classes.submit}
+                        onClick={handleSubmit}
+                        disabled={isValid}
                     >
                         Sign In
                     </Button>
@@ -84,3 +113,5 @@ export default function SignIn() {
         </Container>
     );
 }
+
+export default SignIn
