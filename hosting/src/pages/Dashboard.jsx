@@ -23,7 +23,7 @@ import NotificationsIcon from '@material-ui/icons/Notifications';
 import useStyles from '../config/theme.dashboard';
 
 // Components import
-import Calendar from '../components/Calendar/index';
+import Calendar from '../components/Calendar';
 import Sidebar from '../components/Sidebar/index';
 import Copyright from '../components/Copyright';
 

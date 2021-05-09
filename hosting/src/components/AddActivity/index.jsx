@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { withFirebase } from "../../firebaseFE/index";
-
 import { makeStyles } from '@material-ui/core/styles';
 
 import Button from '@material-ui/core/Button';
@@ -78,7 +77,7 @@ function AddActivity(props) {
                     margin="normal"
                     required
                     fullWidth
-                    label="Activity name"
+                    label="Please enter the time frame that works best for you."
                     value={activity.name}
                     name="name"
                     onChange={handleChange}
