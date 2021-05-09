@@ -1,6 +1,5 @@
 import React from 'react';
 import { withFirebase } from "../../firebaseFE";
-import loader from './loader.gif';
 
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -13,7 +12,7 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
 
 function ActivityList(props) {
-    const {loading, activities, editActivity,setOpenSnackbar, setSnackbarMsg, setEditing} = props;
+    const { activities, activityList, editActivity,setOpenSnackbar, setSnackbarMsg, setEditing} = props;
 
     const deleteActivity = (i) => {
         // Get key of activity in firebase
@@ -41,11 +40,6 @@ function ActivityList(props) {
 
     return (
         <>
-            {
-                loading === true
-                    ? <img src={loader} alt={loader}></img>
-                    : ''
-            }
 
             {
                 activities === 'not set' || activities === null
@@ -67,16 +61,16 @@ function ActivityList(props) {
                                         let {name, type, duration} = activity;
                                         switch(activity.type) {
                                             case 1:
-                                                type = "Lifting weights";
+                                                type = "Meeting";
                                                 break;
                                             case 2:
-                                                type = "Running";
+                                                type = "Casual Conversation";
                                                 break;
                                             case 3:
-                                                type = "Cycling";
+                                                type = "Interview";
                                                 break;
                                             default:
-                                                type = "Not set";
+                                                type = "not set";
                                         };
                                         return (
                                             <TableRow key={i}>

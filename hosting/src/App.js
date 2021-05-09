@@ -26,7 +26,7 @@ function App() {
                     <Route path="/sign-up">
                         <SignUp />
                     </Route>
-                    <Route path="/calendar">
+                    <Route path="/dashboard">
                         <Dashboard />
                     </Route>
                 </Switch>

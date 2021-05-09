@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { withFirebase } from "../../firebaseFE";
+import { withFirebase } from "../../firebaseFE/index";
 
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -95,9 +95,9 @@ function AddActivity(props) {
                         name="type"
                         onChange={handleChange}
                     >
-                        <MenuItem value={1}>Lifting Weights</MenuItem>
-                        <MenuItem value={2}>Running</MenuItem>
-                        <MenuItem value={3}>Cycling</MenuItem>
+                        <MenuItem value={1}>Meeting</MenuItem>
+                        <MenuItem value={2}>Casual Conversation</MenuItem>
+                        <MenuItem value={3}>Interview</MenuItem>
                     </Select>
                 </div>
                 <Typography id="discrete-slider" gutterBottom>

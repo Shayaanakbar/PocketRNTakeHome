@@ -18,7 +18,7 @@ import Container from '@material-ui/core/Container';
 
 import useStyles from "../config/theme-signinup";
 import Copyright from "../components/Copyright";
-import PasswordForget from "../components/PassWordForget";
+import PasswordForget from "../components/PasswordForget";
 
 function SignIn(props) {
 

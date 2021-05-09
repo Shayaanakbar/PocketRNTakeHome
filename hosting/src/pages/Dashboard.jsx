@@ -4,8 +4,6 @@ import { AuthUserContext, withAuthentication } from '../components/Session';
 import { withRouter } from 'react-router-dom';
 
 import {
-    Switch,
-    Route,
     useRouteMatch
 } from "react-router-dom";
 

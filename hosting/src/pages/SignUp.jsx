@@ -6,19 +6,15 @@ import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import Paper from '@material-ui/core/Paper';
 
 import useStyles from "../config/theme-signinup";
 import Copyright from "../components/Copyright";
-import PasswordForget from "../components/PassWordForget";
+import PasswordForget from "../components/PasswordForget";
 
 function SignUp(props) {
     const classes = useStyles();
@@ -34,19 +30,21 @@ function SignUp(props) {
 
     const handleSubmit = e => {
         props.firebase.auth.createUserWithEmailAndPassword(user.email, user.password)
-            .then(authUser => {
+            .then(async authUser => {
                 // Create a user in the Firebase realtime database
-                return props.firebase
+                await props.firebase
                     .user(authUser.user.uid)
                     .set({
                         username: user.name,
                         email: user.email,
                         activities: 'not set'
                     });
+                return authUser;
             })
             .then(authUser => {
-                setUser(initialUser);
-                props.history.push("/calendar");
+                console.log(authUser.user)
+                setUser(authUser);
+                props.history.push("/dashboard");
             })
             .catch(error => {
                 setUser({...user, error: error.message})
@@ -124,6 +122,11 @@ function SignUp(props) {
                         <Grid item>
                             <Link to="/">
                                 {"Already have an account? Sign In"}
+                            </Link>
+                        </Grid>
+                        <Grid item>
+                            <Link to="/">
+                                <PasswordForget />
                             </Link>
                         </Grid>
                     </Grid>

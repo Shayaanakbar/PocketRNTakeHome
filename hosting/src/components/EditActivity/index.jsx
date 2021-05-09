@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { withFirebase } from "../../firebaseFE/index";
+
 import { makeStyles } from '@material-ui/core/styles';
 
 import Button from '@material-ui/core/Button';
@@ -89,9 +90,9 @@ function EditActivity(props) {
                         name="type"
                         onChange={handleChange}
                     >
-                        <MenuItem value={1}>Lifting Weights</MenuItem>
-                        <MenuItem value={2}>Running</MenuItem>
-                        <MenuItem value={3}>Cycling</MenuItem>
+                        <MenuItem value={1}>Interviews</MenuItem>
+                        <MenuItem value={2}>Casual Conversation</MenuItem>
+                        <MenuItem value={3}>Interview</MenuItem>
                     </Select>
                 </div>
                 <Typography id="discrete-slider" gutterBottom>
