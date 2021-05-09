@@ -4,7 +4,7 @@ Name
 - SCHEDULE-APP-REACT-FIREBASE
 - Take home project for Pocket RN
 
-
+``
 Description
 - Scheduling app created with Firebase Backend. Deployed application send your link to
   someone and we can schedule a meeting on the calendar
@@ -13,9 +13,6 @@ Built With
 React - JavaScript Library
 Firebase - Realtime database with Auth
 Material-UI - React components
-
-Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
 
 Installation
 
