@@ -4,12 +4,13 @@ Name
 - SCHEDULE-APP-REACT-FIREBASE
 - Take home project for Pocket RN
 
-``
 Description
+
 - Scheduling app created with Firebase Backend. Deployed application send your link to
   someone and we can schedule a meeting on the calendar
 
-Built With
+Built With -> 
+
 React - JavaScript Library
 Firebase - Realtime database with Auth
 Material-UI - React components
@@ -29,10 +30,10 @@ Firebase
 
 Install node, npm and firebase
 
-Navigate to root project directory
-Install all the packages
-npm install
-npm install firebase
+- Navigate to root project directory
+- Install all the packages
+- npm install
+- npm install firebase
 
 - Development environment
   npm start
@@ -41,6 +42,7 @@ npm install firebase
   npm run build
 
 firebase development environment
+
 firebase emulators:start
 
 - Roadmap
