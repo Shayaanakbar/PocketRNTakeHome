@@ -44,6 +44,7 @@ firebase development environment
 firebase emulators:start
 
 - Roadmap
+
   If I had more time on this project would work on deploying everything statically with React(Nginx),
   along with scaling the application check between what is the better option using React Hooks (useReducers)
   or scaling application with Redux.
