@@ -49,6 +49,7 @@ firebase emulators:start
   or scaling application with Redux.
 
 - Authors and acknowledgment
+
   Thank you to pocketRN for the opportunity :)
 
 - License
