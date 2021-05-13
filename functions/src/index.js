@@ -22,5 +22,6 @@ exports.newUsersSignup = functions.auth.user().onCreate(user => {
 // firebase auth trigger (new user delete)
 exports.userDeleted = functions.auth.user().onDelete(user => {
   const doc = admin.firestore().collection('users').doc(user.uid);
-  return doc.delete
+  return doc.delete();
 })
+
