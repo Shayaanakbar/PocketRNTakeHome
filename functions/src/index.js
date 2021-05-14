@@ -25,3 +25,27 @@ exports.userDeleted = functions.auth.user().onDelete(user => {
   return doc.delete();
 })
 
+// firebase trigger add activity. if/else statement if user is authenticated then continue
+exports.addActivity = functions.https.onCall((uid, data, context) => {
+  if(!context.auth){
+    throw new functions.https.HttpsError(
+        'unauthenticated',
+        'only authenticated users can add requests'
+    );
+  }
+  let activity = admin.firestore().collection(`users/${uid}/activities`).add({
+    date: data.date,
+    duration: data.duration,
+    name: data.name,
+    type: data.type
+  })
+  return activity;
+});
+
+// firebase trigger update activity
+exports.updateActivity = functions.https.onRequest((uid, activity, activityKey) => {
+  const ref = admin.firestore().collection(`users/${uid}/activities/${activityKey}`)
+  ref.update(activity)
+})
+
+
