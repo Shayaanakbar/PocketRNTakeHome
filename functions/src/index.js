@@ -42,6 +42,7 @@ exports.addActivity = functions.https.onCall((uid, data, context) => {
   return activity;
 });
 
+// firebase trigger update activity
 exports.updateActivity = functions.https.onRequest((uid, activity, activityKey) => {
   const ref = admin.firestore().collection(`users/${uid}/activities/${activityKey}`)
   ref.update(activity)
