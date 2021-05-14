@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, useRouteMatch } from 'react-router-dom';
 
+// Import Material UI Style
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
@@ -8,7 +9,6 @@ import ListSubheader from '@material-ui/core/ListSubheader';
 import EventNoteIcon from '@material-ui/icons/EventNote';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import SettingsIcon from '@material-ui/icons/Settings';
-
 import clsx from 'clsx';
 import Drawer from '@material-ui/core/Drawer';
 import IconButton from '@material-ui/core/IconButton';
@@ -17,6 +17,7 @@ import Divider from '@material-ui/core/Divider';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import useStyles from '../../config/theme.dashboard';
 
+// Sidebar Function
 function Sidebar(props) {
     let match = useRouteMatch();
 

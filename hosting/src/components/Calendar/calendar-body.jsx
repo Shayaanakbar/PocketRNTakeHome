@@ -1,7 +1,10 @@
 import React from 'react';
-import './calendar.css';
 import nextId from "react-id-generator";
 
+// Calendar CSS
+import './calendar.css';
+
+// Materal UI Style
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -10,6 +13,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 
+// CalendarBody Function
 const CalendarBody = props => {
 
     const { firstDayOfMonth, daysInMonth, currentDay, currentMonth, currentMonthNum, selectedDay, activeDays, setSelectedDay, actualMonth, weekdays } = props;

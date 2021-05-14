@@ -1,17 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import moment from 'moment';
 
+// Mateial UI Import
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Snackbar from '@material-ui/core/Snackbar';
 
+// Calendar components Import
 import CalendarBody from './calendar-body';
 import CalendarHead from './calendar-head';
 
+// Activities Import
 import AddActivity from '../AddActivity/index';
 import EditActivity from '../EditActivity/index';
 import ActivityList from '../ActivityList/index';
 
+// Function Calendar
 function Calendar(props) {
 
     const {firebase, authUser} = props;
@@ -78,8 +82,6 @@ function Calendar(props) {
             setLoading(false);
         });
     };
-
-
 
     useEffect(() => retrieveData(), [selectedDay]);
 

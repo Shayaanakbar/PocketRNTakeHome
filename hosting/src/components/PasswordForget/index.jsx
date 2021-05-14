@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { withFirebase } from "../../firebaseFE/index";
 import { Link } from 'react-router-dom';
 
+// Material UI import
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
@@ -9,12 +10,13 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
-
 import Snackbar from '@material-ui/core/Snackbar';
 
+// Password forget Function
 function PasswordForget(props) {
 
     const [open, setOpen] = React.useState(false);
+
     const [openAlert, setOpenAlert] = React.useState(false);
 
     const handleClickOpen = () => {

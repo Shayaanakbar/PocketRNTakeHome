@@ -1,12 +1,9 @@
 import React from 'react';
-
 import { AuthUserContext, withAuthentication } from '../components/Session';
 import { withRouter } from 'react-router-dom';
+import {useRouteMatch} from "react-router-dom";
 
-import {
-    useRouteMatch
-} from "react-router-dom";
-
+// Material UI
 import clsx from 'clsx';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Box from '@material-ui/core/Box';
@@ -27,6 +24,7 @@ import Calendar from '../components/Calendar';
 import Sidebar from '../components/Sidebar/index';
 import Copyright from '../components/Copyright';
 
+// Dashboard Function
 function Dashboard(props) {
     let match = useRouteMatch();
 
@@ -37,6 +35,7 @@ function Dashboard(props) {
     const handleDrawerOpen = () => setOpen(true);
     const handleDrawerClose = () => setOpen(false);
 
+    // Signout Component Push back to login page
     const signOut = () => {
         props.firebase.auth.signOut()
         props.history.push("/");
