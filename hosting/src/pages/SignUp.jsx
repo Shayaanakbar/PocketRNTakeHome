@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { withFirebase } from "../firebaseFE/index";
 import { Link, withRouter } from 'react-router-dom';
 
+// Material UI Import
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -12,10 +13,14 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 
+// Style import
 import useStyles from "../config/theme-signinup";
+
+// Components Import
 import Copyright from "../components/Copyright";
 import PasswordForget from "../components/PasswordForget";
 
+// Sign up Function
 function SignUp(props) {
     const classes = useStyles();
 

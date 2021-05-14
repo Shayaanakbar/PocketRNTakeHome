@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { withFirebase } from "../../firebaseFE/index";
 
+// Material UI Import
 import { makeStyles } from '@material-ui/core/styles';
-
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Select from '@material-ui/core/Select';
@@ -11,6 +11,7 @@ import FormControl from '@material-ui/core/FormControl';
 import Slider from '@material-ui/core/Slider';
 import Typography from '@material-ui/core/Typography';
 
+// Material UI Style
 const useStyles = makeStyles(theme => ({
     formControl: {
         minWidth: '100%',
@@ -20,6 +21,7 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
+// Edit Activity Function
 function EditActivity(props) {
     const classes = useStyles();
 

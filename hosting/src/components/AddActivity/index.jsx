@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
-import { withFirebase } from "../../firebaseFE/index";
-import { makeStyles } from '@material-ui/core/styles';
 
+// Firebase import
+import { withFirebase } from "../../firebaseFE/index";
+
+// MaterialUI Import
+import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Select from '@material-ui/core/Select';
@@ -10,6 +13,7 @@ import FormControl from '@material-ui/core/FormControl';
 import Slider from '@material-ui/core/Slider';
 import Typography from '@material-ui/core/Typography';
 
+// UseStyles Snipped
 const useStyles = makeStyles(theme => ({
     formControl: {
         minWidth: '100%',
@@ -19,6 +23,7 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
+// Add Activity Function
 function AddActivity(props) {
     const classes = useStyles();
 

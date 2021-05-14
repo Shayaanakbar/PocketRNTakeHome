@@ -3,6 +3,7 @@ import 'firebase/auth'
 import 'firebase/database';
 import 'firebase/functions;
 
+// Firebase Configuration. Retrieved this from Firebase console
 var firebaseConfig = {
     apiKey: "AIzaSyDXKtXLurv4d4ndBpw4s83oQhjirfBGJzY",
     authDomain: "pocketrn-d6a55.firebaseapp.com",
@@ -14,8 +15,10 @@ var firebaseConfig = {
     measurementId: "G-JP4BQHY4MR"
 };
 
+// initialize firebase
 const app = firebase.initializeApp(firebaseConfig);
 
+// render firebase Functions to use with Callable functions
 const firebaseFunctions = app.functions();
 firebaseFunctions.useEmulator('localhost', 5001);
 

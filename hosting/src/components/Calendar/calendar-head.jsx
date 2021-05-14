@@ -1,6 +1,9 @@
 import React from 'react';
+
+// Calendar CSS
 import './calendar.css';
 
+// Material UI import
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -10,6 +13,7 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 
+// Head of Calendar Function
 const CalendarHead = props => {
 
     const {allMonths, setMonth, toggleMonthSelect, currentMonth, currentYear, showMonthTable} = props;
