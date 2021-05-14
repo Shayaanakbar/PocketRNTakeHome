@@ -25,8 +25,8 @@ exports.userDeleted = functions.auth.user().onDelete(user => {
   return doc.delete();
 })
 
-// firebase trigger add requests. if/else statement if user is authenticated
-exports.addRequest = functions.https.onCall((data, context) => {
+// firebase trigger add activity. if/else statement if user is authenticated then continue
+exports.addActivity = functions.https.onCall((data, context) => {
   if(!context.auth){
     throw new functions.https.HttpsError(
         'unauthenticated',
@@ -39,12 +39,13 @@ exports.addRequest = functions.https.onCall((data, context) => {
         'request must be no more than 30 characters long'
     );
   }
-  return admin.firestore().collection('requests').add({
-    text: data.text,
-    activities: data.activities,
+  return admin.firestore().collection('users/${uid}/activities').add({
     date: data.date,
     duration: data.duration,
-    name: data.name
+    name: data.name,
+    type: data.type
   })
 });
+
+
 
