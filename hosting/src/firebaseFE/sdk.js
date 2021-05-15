@@ -26,10 +26,10 @@ class Firebase {
     }
 }
 
-export function helloWorld() {
-    const res = firebase.app.functions().httpsCallable('helloWorld')({});
-    console.log(res);
-}
+// export function helloWorld() {
+//     const res = firebase.app.functions().httpsCallable('helloWorld')({});
+//     console.log(res);
+// }
 
 // Sign In registration (new)
 export function doSignInWithEmailAndPassword(user, email, password) {
