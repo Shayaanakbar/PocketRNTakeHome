@@ -1,10 +1,10 @@
 import firebase from 'firebase/app'
 import 'firebase/auth'
 import 'firebase/database';
-import 'firebase/functions;
+import 'firebase/functions';
 
 // Firebase Configuration. Retrieved this from Firebase console
-var firebaseConfig = {
+let firebaseConfig = {
     apiKey: "AIzaSyDXKtXLurv4d4ndBpw4s83oQhjirfBGJzY",
     authDomain: "pocketrn-d6a55.firebaseapp.com",
     databaseURL: "https://pocketrn-d6a55-default-rtdb.firebaseio.com",
@@ -16,51 +16,40 @@ var firebaseConfig = {
 };
 
 // initialize firebase
-const app = firebase.initializeApp(firebaseConfig);
-
-// render firebase Functions to use with Callable functions
-const firebaseFunctions = app.functions();
-firebaseFunctions.useEmulator('localhost', 5001);
-
-export function helloWorld() {
-    const res = firebaseFunctions.httpsCallable('helloWorld')({});
-    console.log(res)
-}
-
-
 class Firebase {
     constructor() {
-        app.initializeApp(firebaseConfig);
-        this.auth = app.auth();
-        this.db = app.database();
-    }
-
-    /*** Authentication  ***/
-    doCreateUserWithEmailAndPassword = (email, password) =>
-        this.auth.createUserWithEmailAndPassword(email, password);
-
-    doSignInWithEmailAndPassword = (email, password) =>
-        this.auth.signInWithEmailAndPassword(email, password);
-
-    doSignOut = () =>
-        this.auth.signOut();
-
-    doPasswordReset = email =>
-        this.auth.sendPasswordResetEmail(email);
-
-    /*** Database ***/
-    user = uid => this.db.ref(`users/${uid}`);
-    users = () => this.db.ref('users');
-
-    addActivity = (uid, activity) => {
-        const ref = this.db.ref().child(`users/${uid}/activities`)
-        ref.push(activity);
-    }
-
-    updateActivity = (uid, activity, activityKey) => {
-        const ref = this.db.ref().child(`users/${uid}/activities/${activityKey}`);
-        ref.update(activity);
+        this.app = firebase.initializeApp(firebaseConfig);
+        this.auth = this.app.auth();
+        this.db = this.app.database();
+        this.firebaseFunctions = this.app.functions();
+        this.firebaseFunctions.useEmulator('localhost', 5001);
     }
 }
 
-export default Firebase;
+// export function helloWorld() {
+//     const res = firebase.app.functions().httpsCallable('helloWorld')({});
+//     console.log(res);
+// }
+
+// Sign In registration (new)
+export function doSignInWithEmailAndPassword(user, email, password) {
+    console.log("hitting")
+    const res = firebase.app.functions().httpsCallable('newUsersSignup')({
+        email: user.email,
+        password: user.password
+    })
+    return res
+}
+
+// add activity (new)
+export function addActivity (uid, activity) {
+    const res = firebase.app.functions().httpsCallable('addActivity')({
+        date: uid.data.date,
+        duration: uid.data.duration,
+        name: uid.data.name,
+        type: uid.data.type
+    })
+    return res;
+}
+
+export {Firebase};

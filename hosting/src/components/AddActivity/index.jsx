@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 
 // Firebase import
 import { withFirebase } from "../../firebaseFE/index";
@@ -12,6 +12,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Slider from '@material-ui/core/Slider';
 import Typography from '@material-ui/core/Typography';
+import {addActivity} from "../../firebaseFE/sdk";
 
 // UseStyles Snipped
 const useStyles = makeStyles(theme => ({
@@ -24,10 +25,13 @@ const useStyles = makeStyles(theme => ({
 }));
 
 // Add Activity Function
-function AddActivity(props) {
+const AddActivity = (props) => {
+    // useEffect(() => {
+    //     addActivity(); // Tells me add activity is not a function
+    // })
     const classes = useStyles();
 
-    const {authUser, firebase, selectedDay, setOpenSnackbar, setSnackbarMsg} = props;
+    const { firestore, authUser, firebase, selectedDay, setOpenSnackbar, setSnackbarMsg } = props;
     const uid = authUser.uid;
 
     // Set query date for updating database
@@ -42,6 +46,7 @@ function AddActivity(props) {
         date: queryDate
     }
 
+    // set state for new activity
     const [activity, setActivity] = useState(defaultActivity);
 
     const handleChange = e => {
@@ -62,7 +67,7 @@ function AddActivity(props) {
     // Add the activity to firebase via the API made in this app
     const handleSubmit = () => {
         if (authUser) {
-            firebase.addActivity(uid, activity);
+            addActivity(uid, activity);
             setActivity(defaultActivity);
             // Show notification
             setOpenSnackbar(true);
