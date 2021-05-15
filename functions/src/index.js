@@ -26,25 +26,21 @@ exports.userDeleted = functions.auth.user().onDelete(user => {
 })
 
 // firebase trigger add activity. if/else statement if user is authenticated then continue
-exports.addActivity = functions.https.onCall(( data, context) => {
+exports.addActivity = functions.https.onCall(( uid, data, context) => {
   if(!context.auth){
     throw new functions.https.HttpsError(
         'unauthenticated',
         'only authenticated users can add requests'
     );
   }
-  if (data.text.length > 30) {
-    throw new functions.https.HttpsError(
-        'invalid-argument',
-        'request must be no more than 30 characters long'
-    );
-  }
-  return admin.firestore().collection('activities').add({
-    date: data.date,
-    duration: data.duration,
-    name: data.name,
-    type: data.type
+  return admin.firestore().collection(`users/${uid}/activities`).add({
+    date: uid.data.date,
+    duration: uid.data.duration,
+    name: uid.data.name,
+    type: uid.data.type
   })
 });
+
+exports.editActivity = functions.firestore.document('activites')
 
 
