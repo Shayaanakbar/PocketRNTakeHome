@@ -42,6 +42,7 @@ function AddActivity(props) {
         date: queryDate
     }
 
+    // set state for new activity
     const [activity, setActivity] = useState(defaultActivity);
 
     const handleChange = e => {

@@ -3,8 +3,10 @@ import 'firebase/auth'
 import 'firebase/database';
 import 'firebase/functions;
 
+
+
 // Firebase Configuration. Retrieved this from Firebase console
-var firebaseConfig = {
+let firebaseConfig = {
     apiKey: "AIzaSyDXKtXLurv4d4ndBpw4s83oQhjirfBGJzY",
     authDomain: "pocketrn-d6a55.firebaseapp.com",
     databaseURL: "https://pocketrn-d6a55-default-rtdb.firebaseio.com",
@@ -18,15 +20,33 @@ var firebaseConfig = {
 // initialize firebase
 const app = firebase.initializeApp(firebaseConfig);
 
+// initialize firebase db
+export const db = firebase.firestore();
+
 // render firebase Functions to use with Callable functions
 const firebaseFunctions = app.functions();
 firebaseFunctions.useEmulator('localhost', 5001);
 
+// new
 export function helloWorld() {
     const res = firebaseFunctions.httpsCallable('helloWorld')({});
     console.log(res)
 }
 
+// Sign In registration (new)
+export function doSignInWithEmailAndPassword(user, email, password) {
+    const res = firebaseFunctions.httpsCallable('newUsersSignup')({
+        email: user.email,
+        password: user.password
+    })
+}
+
+// add activity (new)
+export function addActivity (uid, activity) {
+    const res = firebaseFunctions.httpsCallable('addActivity')({
+
+    })
+}
 
 class Firebase {
     constructor() {
@@ -36,14 +56,9 @@ class Firebase {
     }
 
     /*** Authentication  ***/
-    doCreateUserWithEmailAndPassword = (email, password) =>
-        this.auth.createUserWithEmailAndPassword(email, password);
 
     doSignInWithEmailAndPassword = (email, password) =>
         this.auth.signInWithEmailAndPassword(email, password);
-
-    doSignOut = () =>
-        this.auth.signOut();
 
     doPasswordReset = email =>
         this.auth.sendPasswordResetEmail(email);
