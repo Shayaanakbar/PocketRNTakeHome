@@ -26,8 +26,14 @@ class Firebase {
     }
 }
 
+export function helloWorld() {
+    const res = firebase.app.functions().httpsCallable('helloWorld')({});
+    console.log(res);
+}
+
 // Sign In registration (new)
 export function doSignInWithEmailAndPassword(user, email, password) {
+    console.log("hitting")
     const res = firebase.app.functions().httpsCallable('newUsersSignup')({
         email: user.email,
         password: user.password
@@ -37,10 +43,13 @@ export function doSignInWithEmailAndPassword(user, email, password) {
 
 // add activity (new)
 export function addActivity (uid, activity) {
-    console.log("hitting here")
     const res = firebase.app.functions().httpsCallable('addActivity')({
-
+        date: uid.data.date,
+        duration: uid.data.duration,
+        name: uid.data.name,
+        type: uid.data.type
     })
+    return res;
 }
 
 export {Firebase};
