@@ -41,6 +41,3 @@ exports.addActivity = functions.https.onCall(( uid, data, context) => {
   })
 });
 
-exports.editActivity = functions.firestore.document('activites')
-
-
