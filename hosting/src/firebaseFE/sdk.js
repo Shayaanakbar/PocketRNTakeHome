@@ -3,8 +3,6 @@ import 'firebase/auth'
 import 'firebase/database';
 import 'firebase/functions';
 
-
-
 // Firebase Configuration. Retrieved this from Firebase console
 let firebaseConfig = {
     apiKey: "AIzaSyDXKtXLurv4d4ndBpw4s83oQhjirfBGJzY",
@@ -44,6 +42,5 @@ export function addActivity (uid, activity) {
 
     })
 }
-
 
 export {Firebase};

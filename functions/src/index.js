@@ -27,8 +27,6 @@ exports.userDeleted = functions.auth.user().onDelete(user => {
 
 // firebase trigger add activity. if/else statement if user is authenticated then continue
 exports.addActivity = functions.https.onCall(( uid, data, context) => {
-  console.log("uid", uid);
-  console.log("data", data)
   if(!context.auth){
     throw new functions.https.HttpsError(
         'unauthenticated',

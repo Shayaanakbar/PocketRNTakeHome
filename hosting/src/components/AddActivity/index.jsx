@@ -24,7 +24,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 // Add Activity Function
-function AddActivity(props) {
+const AddActivity = (props) => {
     const classes = useStyles();
 
     const {authUser, firebase, selectedDay, setOpenSnackbar, setSnackbarMsg} = props;

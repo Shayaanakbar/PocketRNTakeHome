@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import { withFirebase } from "../firebaseFE/index";
 import { Link, withRouter } from 'react-router-dom';
 
@@ -19,6 +19,8 @@ import useStyles from "../config/theme-signinup";
 // Components Import
 import Copyright from "../components/Copyright";
 import PasswordForget from "../components/PasswordForget";
+// import {doSignInWithEmailAndPassword} from "../firebaseFE/sdk";
+import firebase from "firebase";
 
 // Sign up Function
 function SignUp(props) {
@@ -35,11 +37,10 @@ function SignUp(props) {
 
     const handleSubmit = e => {
         console.log("pros", props)
-        props.firebase.auth.createUserWithEmailAndPassword(user.email, user.password)
-            .then(async authUser => {
-                // Create a user in the Firebase realtime database
-                await props.firebase
-                    .user(authUser.user.uid)
+        firebase.auth().createUserWithEmailAndPassword(user.email, user.password)
+            .then( async authUser => {
+                // Create a user in the Firebase database
+                    await firebase.firestore().collection('users').doc(firebase.auth().currentUser.uid)
                     .set({
                         username: user.name,
                         email: user.email,
