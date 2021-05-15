@@ -1,7 +1,7 @@
 import firebase from 'firebase/app'
 import 'firebase/auth'
 import 'firebase/database';
-import 'firebase/functions;
+import 'firebase/functions';
 
 
 
@@ -18,64 +18,32 @@ let firebaseConfig = {
 };
 
 // initialize firebase
-const app = firebase.initializeApp(firebaseConfig);
-
-// initialize firebase db
-export const db = firebase.firestore();
-
-// render firebase Functions to use with Callable functions
-const firebaseFunctions = app.functions();
-firebaseFunctions.useEmulator('localhost', 5001);
-
-// new
-export function helloWorld() {
-    const res = firebaseFunctions.httpsCallable('helloWorld')({});
-    console.log(res)
+class Firebase {
+    constructor() {
+        this.app = firebase.initializeApp(firebaseConfig);
+        this.auth = this.app.auth();
+        this.db = this.app.database();
+        this.firebaseFunctions = this.app.functions();
+        this.firebaseFunctions.useEmulator('localhost', 5001);
+    }
 }
 
 // Sign In registration (new)
 export function doSignInWithEmailAndPassword(user, email, password) {
-    const res = firebaseFunctions.httpsCallable('newUsersSignup')({
+    const res = firebase.app.functions().httpsCallable('newUsersSignup')({
         email: user.email,
         password: user.password
     })
+    return res
 }
 
 // add activity (new)
 export function addActivity (uid, activity) {
-    const res = firebaseFunctions.httpsCallable('addActivity')({
+    console.log("hitting here")
+    const res = firebase.app.functions().httpsCallable('addActivity')({
 
     })
 }
 
-class Firebase {
-    constructor() {
-        app.initializeApp(firebaseConfig);
-        this.auth = app.auth();
-        this.db = app.database();
-    }
 
-    /*** Authentication  ***/
-
-    doSignInWithEmailAndPassword = (email, password) =>
-        this.auth.signInWithEmailAndPassword(email, password);
-
-    doPasswordReset = email =>
-        this.auth.sendPasswordResetEmail(email);
-
-    /*** Database ***/
-    user = uid => this.db.ref(`users/${uid}`);
-    users = () => this.db.ref('users');
-
-    addActivity = (uid, activity) => {
-        const ref = this.db.ref().child(`users/${uid}/activities`)
-        ref.push(activity);
-    }
-
-    updateActivity = (uid, activity, activityKey) => {
-        const ref = this.db.ref().child(`users/${uid}/activities/${activityKey}`);
-        ref.update(activity);
-    }
-}
-
-export default Firebase;
+export {Firebase};

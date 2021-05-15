@@ -34,6 +34,7 @@ function SignUp(props) {
     }
 
     const handleSubmit = e => {
+        console.log("pros", props)
         props.firebase.auth.createUserWithEmailAndPassword(user.email, user.password)
             .then(async authUser => {
                 // Create a user in the Firebase realtime database
